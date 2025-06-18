@@ -1,7 +1,9 @@
-import express from 'express';
 import dotenv from 'dotenv';
-import { userRouter } from './routes/user.routes';
+import express from 'express';
 import { AppDataSource } from './data-source';
+import { feedRouter } from './routes/feed.routes';
+import { postRouter } from './routes/post.routes';
+import { userRouter } from './routes/user.routes';
 
 dotenv.config();
 
@@ -21,6 +23,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/users', userRouter);
+app.use('/api/posts', postRouter);
+app.use('/api/feed', feedRouter);
 
 const PORT = process.env.PORT || 3000;
 
